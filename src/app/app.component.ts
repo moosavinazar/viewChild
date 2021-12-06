@@ -7,7 +7,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  public onClick(message: string) {
-    alert(message);
+  public onClick(val: HTMLInputElement) {
+    alert(val.value);
   }
 }
