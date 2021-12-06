@@ -1,4 +1,6 @@
 <p>From app component</p>
 <label>Test Label</label>
 <br>
+<input #inputName type="text">
+<button (click)="onClick(inputName.value)">Click Me!</button>
 <app-inc></app-inc>

@@ -7,5 +7,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  title = 'viewChild';
+  public onClick(message: string) {
+    alert(message);
+  }
 }
