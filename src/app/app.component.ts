@@ -1,4 +1,14 @@
-import {AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild, ViewEncapsulation} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  QueryList,
+  Renderer2,
+  ViewChild,
+  ViewChildren,
+  ViewEncapsulation
+} from '@angular/core';
 import {IncComponent} from "./inc/inc.component";
 
 @Component({
@@ -12,6 +22,7 @@ export class AppComponent implements OnInit, AfterViewInit{
   // the meaning of ! is: https://docs.angular.lat/guide/template-expression-operators#the-non-null-assertion-operator---
   @ViewChild('par', {static: true}) par!: ElementRef;
   @ViewChild(IncComponent, {static: true, read: IncComponent}) incComp!: IncComponent;
+  @ViewChildren(IncComponent, {read: IncComponent}) incComps = new QueryList<IncComponent>();
 
   constructor(private renderer: Renderer2) {
   }
@@ -25,7 +36,9 @@ export class AppComponent implements OnInit, AfterViewInit{
   }
 
   ngAfterViewInit(): void {
-
+    this.incComps.forEach( comp => {
+      comp.increment()
+    });
   }
 
   public onClick(val: HTMLInputElement) {
